@@ -1,0 +1,30 @@
+# Starter GraphQL schema for the Product entity
+
+type Product {
+  id: ID!
+  name: String!
+  category: String!
+  price: Float!
+  stock: Int!
+}
+
+type Query {
+  # Return all products
+  products: [Product!]!
+
+  # Return a single product by id
+  productById(id: ID!): Product
+}
+
+input CreateProductInput {
+  name: String!
+  category: String!
+  price: Float!
+  stock: Int!
+}
+
+type Mutation {
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(id: ID!, input: CreateProductInput!): Product
+  deleteProduct(id: ID!): Boolean!
+}
